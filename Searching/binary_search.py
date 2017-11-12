@@ -11,7 +11,7 @@ interval is empty.
 """
 
 
-def iterative_binary_search(sorted_list_of_elems, element):
+def iterative_search(sorted_list_of_elems, element):
     """
     Iterative Binary Search Function
     It returns location of x in given array arr if present,
@@ -38,7 +38,7 @@ def iterative_binary_search(sorted_list_of_elems, element):
     return -1
 
 
-def recursive_binary_search(sorted_list_of_elems, element):
+def recursive_search(sorted_list_of_elems, element):
     """
     Recursive Binary Search Function
     It returns location of x in given array arr if present,
@@ -60,14 +60,14 @@ def recursive_binary_search(sorted_list_of_elems, element):
         # Beware we are shifting the start position
         # in the upcoming recursive call
 
-        index = recursive_binary_search(
+        index = recursive_search(
             sorted_list_of_elems[mid_index + 1:], element
         )
 
         return (mid_index + 1) + index if index != -1 else -1
     else:
         # If element is smaller, ignore right half
-        return recursive_binary_search(
+        return recursive_search(
             sorted_list_of_elems[: mid_index], element
         )
 
@@ -75,14 +75,16 @@ def recursive_binary_search(sorted_list_of_elems, element):
     return -1
 
 # Running the code
+"""
 LIST_OF_ELEMS = [2, 3, 4, 10, 40, 44, 45, 89, 101, 112, 178, 205]
 
-print iterative_binary_search(LIST_OF_ELEMS, 101)  # will print 8
-print iterative_binary_search(LIST_OF_ELEMS, 300)  # will print -1
-print iterative_binary_search(LIST_OF_ELEMS, 1)  # will print -1
-print iterative_binary_search(LIST_OF_ELEMS, 2)  # will print 0
+print iterative_search(LIST_OF_ELEMS, 101)  # will print 8
+print iterative_search(LIST_OF_ELEMS, 300)  # will print -1
+print iterative_search(LIST_OF_ELEMS, 1)  # will print -1
+print iterative_search(LIST_OF_ELEMS, 2)  # will print 0
 
-print recursive_binary_search(LIST_OF_ELEMS, 101)  # will print 8
-print recursive_binary_search(LIST_OF_ELEMS, 300)  # will print -1
-print recursive_binary_search(LIST_OF_ELEMS, 1)  # will print -1
-print recursive_binary_search(LIST_OF_ELEMS, 2)  # will print 0
+print recursive_search(LIST_OF_ELEMS, 101)  # will print 8
+print recursive_search(LIST_OF_ELEMS, 300)  # will print -1
+print recursive_search(LIST_OF_ELEMS, 1)  # will print -1
+print recursive_search(LIST_OF_ELEMS, 2)  # will print 0
+"""

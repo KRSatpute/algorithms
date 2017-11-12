@@ -19,5 +19,7 @@ def search(list_of_elements, element):
     return -1
 
 # Running the code
+"""
 print search(range(1, 21, 2), 9)  # will print 4
 print search(range(1, 21, 2), 0)  # will print -1
+"""
