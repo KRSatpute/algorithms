@@ -50,6 +50,12 @@ def recursive_search(element_list_sorted, element):
 
     index_mid = index_start + (index_last - index_start) / 2
 
+    if length_list == 1:
+        if element_list_sorted[0] == element:
+            return 0
+        else:
+            return -1
+
     if length_list == 2:
         if element_list_sorted[0] == element:
             return 0
@@ -83,13 +89,12 @@ def recursive_search(element_list_sorted, element):
 # Running the code
 
 LIST_OF_ELEMS = [2, 3, 4, 10, 40, 44, 45, 89, 101, 112, 178, 205]
-"""
-print iterative_search(LIST_OF_ELEMS, 101)  # will print 8
-print iterative_search(LIST_OF_ELEMS, 300)  # will print -1
-print iterative_search(LIST_OF_ELEMS, 1)  # will print -1
-print iterative_search(LIST_OF_ELEMS, 2)  # will print 0
-print recursive_search(LIST_OF_ELEMS, 101)  # will print 8
-print recursive_search(LIST_OF_ELEMS, 300)  # will print -1
-print recursive_search(LIST_OF_ELEMS, 1)  # will print -1
-print recursive_search(LIST_OF_ELEMS[0:2], 3)  # will print 1
-"""
+
+# print iterative_search(LIST_OF_ELEMS, 101)  # will print 8
+# print iterative_search(LIST_OF_ELEMS, 300)  # will print -1
+# print iterative_search(LIST_OF_ELEMS, 1)  # will print -1
+# print iterative_search(LIST_OF_ELEMS, 2)  # will print 0
+# print recursive_search(LIST_OF_ELEMS, 101)  # will print 8
+print recursive_search(LIST_OF_ELEMS, 1616164)  # will print -1
+# print recursive_search(LIST_OF_ELEMS, 10)  # will print 3
+# print recursive_search(LIST_OF_ELEMS[0:2], -8451854)  # will print -1s
