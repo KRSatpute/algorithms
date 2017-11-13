@@ -11,64 +11,64 @@ interval is empty.
 """
 
 
-def iterative_search(sorted_list_of_elems, element):
+def iterative_search(elements_list_sorted, element):
     """
     Iterative Binary Search Function
     It returns location of x in given array arr if present,
     else returns -1
     """
-    start_index = 0
-    last_index = len(sorted_list_of_elems) - 1
+    index_start = 0
+    index_last = len(elements_list_sorted) - 1
 
-    while start_index <= last_index:
+    while index_start <= index_last:
 
-        mid_index = start_index + (last_index - start_index) / 2
+        index_mid = index_start + (index_last - index_start) / 2
 
-        if sorted_list_of_elems[mid_index] == element:
+        if elements_list_sorted[index_mid] == element:
             # Check if element is present at mid
-            return mid_index
-        elif sorted_list_of_elems[mid_index] < element:
-            # If x is greater, ignore left half
-            start_index = mid_index + 1
+            return index_mid
+        elif elements_list_sorted[index_mid] < element:
+            # If element is greater, ignore left half
+            index_start = index_mid + 1
         else:
-            # If x is smaller, ignore right half
-            last_index = mid_index - 1
+            # If element is smaller, ignore right half
+            index_last = index_mid - 1
 
     # If we reach here, then the element was not present
     return -1
 
 
-def recursive_search(sorted_list_of_elems, element):
+def recursive_search(element_list_sorted, element):
     """
     Recursive Binary Search Function
     It returns location of x in given array arr if present,
     else returns -1
     """
-    start_index = 0
-    last_index = len(sorted_list_of_elems) - 1
+    index_start = 0
+    index_last = len(element_list_sorted) - 1
 
-    mid_index = start_index + (last_index - start_index) / 2
+    index_mid = index_start + (index_last - index_start) / 2
 
-    if mid_index == 0 and sorted_list_of_elems[mid_index] != element:
+    if index_mid == 0 and element_list_sorted[index_mid] != element:
         return -1
 
-    if sorted_list_of_elems[mid_index] == element:
+    if element_list_sorted[index_mid] == element:
         # Check if element is present at mid
-        return mid_index
-    elif sorted_list_of_elems[mid_index] < element:
+        return index_mid
+    elif element_list_sorted[index_mid] < element:
         # If element is greater, ignore left half
         # Beware we are shifting the start position
         # in the upcoming recursive call
 
         index = recursive_search(
-            sorted_list_of_elems[mid_index + 1:], element
+            element_list_sorted[index_mid + 1:], element
         )
 
-        return (mid_index + 1) + index if index != -1 else -1
+        return (index_mid + 1) + index if index != -1 else -1
     else:
         # If element is smaller, ignore right half
         return recursive_search(
-            sorted_list_of_elems[: mid_index], element
+            element_list_sorted[: index_mid], element
         )
 
     # If we reach here, then the element was not present

@@ -11,9 +11,9 @@
 """
 
 
-def search(list_of_elements, element):
+def search(elements_list, element):
     """ search element in list and return its position """
-    for index, item in enumerate(list_of_elements):
+    for index, item in enumerate(elements_list):
         if item == element:
             return index
     return -1

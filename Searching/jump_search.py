@@ -18,7 +18,7 @@ STEP 5: Perform linear search from index 9 to get the element 55.
 from linear_search import search as linear_search
 
 
-def search(sorted_list_of_elems, element):
+def search(element_list_sorted, element):
     """
     Determinig the jump_step
 
@@ -31,20 +31,20 @@ def search(sorted_list_of_elems, element):
     best step size is m = sqrt(n).
     """
 
-    list_length = len(sorted_list_of_elems)
+    length_list = len(element_list_sorted)
 
-    jump_step = int(list_length ** (1 / 2.0))
+    jump_step = int(length_list ** (1 / 2.0))
 
     prev = 0
     # find the block where element is present
     # if it is present
-    while sorted_list_of_elems[min(jump_step, list_length) - 1] < element:
+    while element_list_sorted[min(jump_step, length_list) - 1] < element:
         prev = jump_step
         jump_step += jump_step
-        if prev >= list_length:
+        if prev >= length_list:
             return -1
 
-    return prev + linear_search(sorted_list_of_elems[prev:], element)
+    return prev + linear_search(element_list_sorted[prev:], element)
 
 # Running the code
 """
