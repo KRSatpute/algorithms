@@ -38,54 +38,31 @@ def iterative_search(elements_list_sorted, element):
     return -1
 
 
-def recursive_search(element_list_sorted, element):
+def recursive_search(elements_list_sorted, element):
     """
     Recursive Binary Search Function
     It returns location of x in given array arr if present,
     else returns -1
     """
-    length_list = len(element_list_sorted)
-    index_start = 0
-    index_last = length_list - 1
+    def recurse(first, last):
+        """
+        Recursive part of the algorithm
+        """
+        mid = (first + last) / 2
 
-    index_select = 0
+        if first > last:
+            return -1
 
-    index_mid = index_start + (index_last - index_start) / 2
+        elif elements_list_sorted[mid] < element:
+            return recurse(mid + 1, last)
 
-    if length_list == 1:
-        if element_list_sorted[0] == element:
-            index_select = 0
+        elif elements_list_sorted[mid] > element:
+            return recurse(first, mid - 1)
+
         else:
-            index_select = -1
+            return mid
 
-    if length_list == 2:
-        if element_list_sorted[0] == element:
-            index_select = 0
-        elif element_list_sorted[1] == element:
-            index_select = 1
-        else:
-            index_select = -1
-    else:
-        if element_list_sorted[index_mid] == element:
-            # Check if element is present at mid
-            index_select = index_mid
-        elif element_list_sorted[index_mid] < element:
-            # If element is greater, ignore left half
-            # Beware we are shifting the start position
-            # in the upcoming recursive call
-
-            index = recursive_search(
-                element_list_sorted[index_mid + 1:], element
-            )
-
-            index_select = (index_mid + 1) + index if index != -1 else -1
-        else:
-            # If element is smaller, ignore right half
-            index_select = recursive_search(
-                element_list_sorted[: index_mid], element
-            )
-
-    return index_select
+    return recurse(0, len(elements_list_sorted)-1)
 
 # Running the code
 

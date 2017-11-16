@@ -36,7 +36,7 @@ def search(element_list_sorted, element):
         if binary_search_result != -1 else -1
 
 # Running the code
-
+"""
 LIST_OF_ELEMS = [0, 1, 1, 2, 3, 5, 8, 13, 21,
                  34, 55, 89, 144, 233, 377, 610, 987]
 print search(LIST_OF_ELEMS, 144)  # will print 12
@@ -44,4 +44,5 @@ print search(LIST_OF_ELEMS, 165415)  # will print -1
 print search(LIST_OF_ELEMS, 13)  # will print 7
 print search(LIST_OF_ELEMS, 987)  # will print 16
 print search(LIST_OF_ELEMS, -232)  # will print -1
-print search(LIST_OF_ELEMS[0:1], 0)  # will print 1
+print search(LIST_OF_ELEMS[0:1], 0)  # will print 0
+"""
