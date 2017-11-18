@@ -26,9 +26,15 @@ def sort(elements_list):
 
     return elements_list
 
-# Running the code
-"""
-LIST_OF_ELEMS = [3, 178, 4, 101, 40, 44, 205, 89, 10, 112, 2, 45]
 
-print sort(LIST_OF_ELEMS)  # [2, 3, 4, 10, 40, 44, 45, 89, 101, 112, 178, 205]
-"""
+def main():
+    """
+    Main. Running the code
+    """
+    list_of_elems = [3, 178, 4, 101, 40, 44, 205, 89, 10, 112, 2, 45]
+
+    print sort(list_of_elems)
+    # will print [2, 3, 4, 10, 40, 44, 45, 89, 101, 112, 178, 205]
+
+if __name__ == "__main__":
+    main()
