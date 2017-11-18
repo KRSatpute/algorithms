@@ -1,13 +1,11 @@
 """
-Jump Search is a searching algorithm for sorted arrays
-by fixed steps or skipping some elements in place of
-searching all elements
+Jump Search is a searching algorithm for sorted arrays by fixed steps or
+skipping some elements in place of searching all elements
 
 Consider the following array:
 (0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610).
-Length of the array is 16. Jump search will find the
-value of 55 with the following steps assuming that the
-block size to be jumped is 4.
+Length of the array is 16. Jump search will find the value of 55 with the
+following steps assuming that the block size to be jumped is 4.
 STEP 1: Jump from index 0 to index 4;
 STEP 2: Jump from index 4 to index 8;
 STEP 3: Jump from index 8 to index 16;
@@ -46,12 +44,18 @@ def search(element_list_sorted, element):
 
     return prev + linear_search(element_list_sorted[prev:], element)
 
-# Running the code
-"""
-LIST_OF_ELEMS = [0, 1, 1, 2, 3, 5, 8, 13, 21,
-                 34, 55, 89, 144, 233, 377, 610, 987]
-print search(LIST_OF_ELEMS, 144)  # will print 12
-print search(LIST_OF_ELEMS, 165415)  # will print -1
-print search(LIST_OF_ELEMS, 13)  # will print 7
-print search(LIST_OF_ELEMS, 987)  # will print 16
-"""
+
+def main():
+    """
+    Main. Running the code
+    """
+    list_of_elems = [0, 1, 1, 2, 3, 5, 8, 13, 21,
+                     34, 55, 89, 144, 233, 377, 610, 987]
+    print search(list_of_elems, 144)  # will print 12
+    print search(list_of_elems, 165415)  # will print -1
+    print search(list_of_elems, 13)  # will print 7
+    print search(list_of_elems, 987)  # will print 16
+
+
+if __name__ == "__main__":
+    main()

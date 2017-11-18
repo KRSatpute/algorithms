@@ -4,7 +4,6 @@ insertionSort(arr, n)
 Loop from i = 1 to n-1.
 Pick element arr[i] and insert it into sorted sequence arr[0...i-1]
 """
-from 
 
 
 def sort(elements_list):

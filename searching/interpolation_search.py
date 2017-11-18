@@ -1,18 +1,15 @@
 """
-Given a sorted array of n uniformly distributed values arr[],
-search for a particular element x in the array.
-Interpolation search may go to different locations according the
-value of key being searched. For example if the value of key is
-closer to the last element, interpolation search is likely to
-start search toward the end side.
+Given a sorted array of n uniformly distributed values arr[], search for a
+particular element x in the array.
+Interpolation search may go to different locations according the value of key
+being searched. For example if the value of key is closer to the last element,
+interpolation search is likely to start search toward the end side.
 
 To find the position to be searched, it uses following formula.
+The idea of formula is to return higher value of pos when element to be
+searched is closer to arr[hi] and smaller value when closer to arr[lo]
 
-// The idea of formula is to return higher value of pos
-// when element to be searched is closer to arr[hi]. And
-// smaller value when closer to arr[lo]
 pos = lo + [ (x-arr[lo])*(hi-lo) / (arr[hi]-arr[Lo]) ]
-
 arr[] ==> Array where elements need to be searched
 x     ==> Element to be searched
 lo    ==> Starting index in arr[]
@@ -56,14 +53,19 @@ def search(element_list_sorted, element):
 
     return -1
 
-# Running the code
-"""
-LIST_OF_ELEMS = [10, 12, 13, 16, 18, 19, 20, 21,
-                 22, 23, 24, 33, 35, 42, 47]
-print search(LIST_OF_ELEMS, 18)  # will print 4
-print search(LIST_OF_ELEMS, 47)  # will print 14
-print search(LIST_OF_ELEMS, 10)  # will print 0
-print search(LIST_OF_ELEMS, 33)  # will print 11
-print search(LIST_OF_ELEMS, 1)  # will print -1
-print search(LIST_OF_ELEMS, 300)  # will print -1
-"""
+
+def main():
+    """
+    Main. Running the code
+    """
+    list_of_elems = [10, 12, 13, 16, 18, 19, 20, 21,
+                     22, 23, 24, 33, 35, 42, 47]
+    print search(list_of_elems, 18)  # will print 4
+    print search(list_of_elems, 47)  # will print 14
+    print search(list_of_elems, 10)  # will print 0
+    print search(list_of_elems, 33)  # will print 11
+    print search(list_of_elems, 1)  # will print -1
+    print search(list_of_elems, 300)  # will print -1
+
+if __name__ == "__main__":
+    main()
