@@ -13,7 +13,7 @@ STEP 4: Since the element at index 16 is greater than 55 we
 will jump back a step to come to index 9.
 STEP 5: Perform linear search from index 9 to get the element 55.
 """
-from linear_search import search as linear_search
+import algorithms.searching.linear_search as li_s
 
 
 def search(element_list_sorted, element):
@@ -42,7 +42,7 @@ def search(element_list_sorted, element):
         if prev >= length_list:
             return -1
 
-    return prev + linear_search(element_list_sorted[prev:], element)
+    return prev + li_s.search(element_list_sorted[prev:], element)
 
 
 def main():

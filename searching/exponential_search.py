@@ -5,8 +5,7 @@ greater. Once we find an index i (after repeated doubling of i), we know that
 the element must be present between i/2 and i (Why i/2? because we could not
 find a greater value in previous iteration)
 """
-
-from binary_search import recursive_search as binary_search
+import algorithms.searching.binary_search as bi_s
 
 
 def search(element_list_sorted, element):
@@ -26,7 +25,7 @@ def search(element_list_sorted, element):
             element_list_sorted[index] <= element:
         index *= 2
 
-    binary_search_result = binary_search(
+    binary_search_result = bi_s.iterative_search(
         element_list_sorted[(index / 2): min(index, length_list)], element
         )
     return (index / 2) + binary_search_result\
