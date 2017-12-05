@@ -13,10 +13,7 @@ STEP 4: Since the element at index 16 is greater than 55 we
 will jump back a step to come to index 9.
 STEP 5: Perform linear search from index 9 to get the element 55.
 """
-import sys
-import os
-sys.path.append(os.path.dirname(os.curdir))
-import algorithms.searching.linear_search as li_s
+from algorithms.searching.linear_search import search as li_s
 # Change this to 'import linear_search as li_s' for local run
 
 
@@ -46,7 +43,7 @@ def search(element_list_sorted, element):
         if prev >= length_list:
             return -1
 
-    return prev + li_s.search(element_list_sorted[prev:], element)
+    return prev + li_s(element_list_sorted[prev:], element)
 
 
 def main():

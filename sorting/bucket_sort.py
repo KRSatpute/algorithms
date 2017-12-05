@@ -7,10 +7,7 @@ partition the keys of the input array, so that multiple keys may hash to the
 same bucket. Hence each bucket must effectively be a growable list; similar to
 radix sort.
 """
-import sys
-import os
-sys.path.append(os.path.dirname(os.curdir))
-import algorithms.sorting.insertion_sort as in_sort
+from algorithms.sorting.insertion_sort import sort as in_sort
 # Change this to 'import insertion_sort as in_sort' for local run
 
 
@@ -49,7 +46,7 @@ def sort(elements_list):
         buckets[bucket_pos].append(index)
 
     for bucket in buckets:
-        bucket = in_sort.sort(bucket)
+        bucket = in_sort(bucket)
 
     pos = 0
     for bucket_pos, _ in enumerate(buckets):

@@ -5,10 +5,7 @@ greater. Once we find an index i (after repeated doubling of i), we know that
 the element must be present between i/2 and i (Why i/2? because we could not
 find a greater value in previous iteration)
 """
-import sys
-import os
-sys.path.append(os.path.dirname(os.curdir))
-import algorithms.searching.binary_search as bi_s
+from algorithms.searching.binary_search import iterative_search as bi_s
 # Change this to 'import binary_search as bi_s' for local run
 
 
@@ -29,7 +26,7 @@ def search(element_list_sorted, element):
             element_list_sorted[index] <= element:
         index *= 2
 
-    binary_search_result = bi_s.iterative_search(
+    binary_search_result = bi_s(
         element_list_sorted[(index / 2): min(index, length_list)], element
         )
     return (index / 2) + binary_search_result\

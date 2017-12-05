@@ -6,33 +6,39 @@ and finish time (fi). The problem is to select the maximum number of
 activities that can be performed by a single person or machine, assuming that
 a person can only work on a single activity at a time.
 """
-import sys
-import os
-sys.path.insert(0, os.path.abspath(os.path.join(
-    os.path.dirname(__file__), os.pardir, "reordering"))
-    )
-import reordering
 
 
-def select_max_activities(start, finish):
+def select_max_activities(activities):
     """
-    Returns a maximum set of activities that can be done by a
+    Returns a maximum list of activities that can be done by a
     single person, one at a time.
 
-    start: An array that contains start time of all activities
-    finish: An array that conatins finish time of all activities
+    :param activities: list of tuples containing start and finish
+    ex: [(5, 9), (1, 2), (3, 4), (0, 6), (5, 7), (8, 9)]
     """
-    return reordering.reorder.re_order(start, finish)
+    activities.sort(key=lambda x: x[1])
+
+    max_activities = []
+    max_activities.append(activities[0])
+
+    pos = 0
+
+    for idx, val in enumerate(activities):
+        if idx > pos:
+            if activities[idx][0] >= activities[pos][1]:
+                max_activities.append(val)
+                pos = idx
+
+    return max_activities
 
 
 def main():
     """
     Running the code
     """
-    arr = [5, 1, 3, 0, 5, 8]
-    arr_to_sort = [9, 2, 4, 6, 7, 9]
+    activities = [(5, 9), (1, 2), (3, 4), (0, 6), (5, 7), (8, 9)]
 
-    print select_max_activities(arr, arr_to_sort)
+    print select_max_activities(activities)
 
 if __name__ == "__main__":
     main()

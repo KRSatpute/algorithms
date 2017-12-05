@@ -17,11 +17,8 @@ principles:
     requirement results from the fact that the merge sort performs best on
     the runs of about the same length.
 """
-import sys
-import os
-sys.path.append(os.path.dirname(os.curdir))
-import algorithms.sorting.insertion_sort as in_sort
-import algorithms.sorting.merge_sort as mrg_sort
+from algorithms.sorting.insertion_sort import sort as in_sort
+from algorithms.sorting.merge_sort import sort as mrg_sort
 
 
 def get_min_run(size):
@@ -48,7 +45,7 @@ def sort(elements_list):
     while start < length:
         # Sort individual subarrays of size min_run
         elements_list[start: min(start + min_run, length)] =\
-            in_sort.sort(elements_list[start: min(start + min_run, length)])
+            in_sort(elements_list[start: min(start + min_run, length)])
         start += min_run
 
     size = min_run
@@ -59,7 +56,7 @@ def sort(elements_list):
 
             right = min((left + 2 * size - 1), (length - 1))
             elements_list[left: right + 1] =\
-                mrg_sort.sort(elements_list[left: right + 1])
+                mrg_sort(elements_list[left: right + 1])
             left += 2 * size
 
         size = 2 * size
