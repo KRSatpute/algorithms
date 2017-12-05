@@ -17,8 +17,11 @@ principles:
     requirement results from the fact that the merge sort performs best on
     the runs of about the same length.
 """
-import insertion_sort as in_sort
-import merge_sort as mrg_sort
+import sys
+import os
+sys.path.append(os.path.dirname(os.curdir))
+import algorithms.sorting.insertion_sort as in_sort
+import algorithms.sorting.merge_sort as mrg_sort
 
 
 def get_min_run(size):

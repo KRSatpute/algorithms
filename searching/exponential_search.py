@@ -5,7 +5,10 @@ greater. Once we find an index i (after repeated doubling of i), we know that
 the element must be present between i/2 and i (Why i/2? because we could not
 find a greater value in previous iteration)
 """
-import binary_search as bi_s
+import sys
+import os
+sys.path.append(os.path.dirname(os.curdir))
+import algorithms.searching.binary_search as bi_s
 # Change this to 'import binary_search as bi_s' for local run
 
 
