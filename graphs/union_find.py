@@ -88,14 +88,14 @@ def main():
     Running the code
     """
     # Part a)
-    unfi = UnionFind(9)
+    union_find = UnionFind(9)
 
     print "Initial Set:"
-    print unfi
+    print union_find
 
-    unfi.union(2, 3)
-    unfi.union(4, 3)
-    unfi.union(6, 5)
+    union_find.union(2, 3)
+    union_find.union(4, 3)
+    union_find.union(6, 5)
 
     msg = (
         "\n"
@@ -106,23 +106,23 @@ def main():
         )
 
     print msg
-    print unfi
-    print unfi.has_same_root(2, 3)
+    print union_find
+    print union_find.has_same_root(2, 3)
 
     # Part b)
-    unfi.union(2, 4)
+    union_find.union(2, 4)
     print "\nParent array after union(2, 4)"
-    print unfi
+    print union_find
 
     # Part c)
-    unfi.find(2)
+    union_find.find(2)
     print "\nParent array after find(2)"
-    print unfi
+    print union_find
 
     # Part d)
     my_dict = {}
     for node in range(9):
-        root = unfi.find(node)
+        root = union_find.find(node)
         if root not in my_dict:
             my_dict[root] = set([node])
         else:

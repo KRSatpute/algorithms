@@ -23,7 +23,7 @@ class Graph(object):
         self.vertices = vertices
         self.is_directed = is_directed
         self.graph = defaultdict(list)
-        self.unfi = UnionFind(self.vertices)
+        self.union_find = UnionFind(self.vertices)
         self.is_cyclic = False
 
     def add_edge(self, start, end):
@@ -38,10 +38,10 @@ class Graph(object):
 
         # No need to check for cycle if cycle is already detected
         if not self.is_cyclic:
-            set1 = self.unfi.find(start)
-            set2 = self.unfi.find(end)
+            set1 = self.union_find.find(start)
+            set2 = self.union_find.find(end)
             self.is_cyclic = set1 == set2
-            self.unfi.union(set1, set2)
+            self.union_find.union(set1, set2)
 
     def __str__(self):
         grph = "Graph: " + str([(node1, node2)
