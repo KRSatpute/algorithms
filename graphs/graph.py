@@ -36,17 +36,23 @@ class Graph(object):
             self.graph[start].append(end)
             self.graph[end].append(start)
 
-        # No need to check for cycle if cycle is already detected
-        if not self.is_cyclic:
-            set1 = self.union_find.find(start)
-            set2 = self.union_find.find(end)
-            self.is_cyclic = set1 == set2
-            self.union_find.union(set1, set2)
+        def check_cycle():
+            """
+            check for cycle in graph
+            """
+            # No need to check for cycle if cycle is already detected
+            if not self.is_cyclic:
+                set1 = self.union_find.find(start)
+                set2 = self.union_find.find(end)
+                self.is_cyclic = set1 == set2
+                self.union_find.union(set1, set2)
+
+        check_cycle()
 
     def __str__(self):
-        grph = "Graph: " + str([(node1, node2)
-                                for node1 in self.graph
-                                for node2 in self.graph[node1]])
+        grph = "Graph: " + str(set([(node1, node2)
+                                    for node1 in self.graph
+                                    for node2 in self.graph[node1]]))
 
         return "\n".join([
             grph,
