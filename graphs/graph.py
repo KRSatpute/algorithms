@@ -13,7 +13,7 @@ from algorithms.graphs.union_find import UnionFind
 
 class Graph(object):
     """
-    A representation for graph data structure
+    A representation for connected graph data structure
 
     :param vertices: No. of vertices
     :param is_directed: Indicate if graph is directed or un-directed
