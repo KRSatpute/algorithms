@@ -1,7 +1,7 @@
 """
 A disjoint-set data structure is a data structure that keeps track of a set of
 elements partitioned into a number of disjoint (non-overlapping) subsets. A
-union_set-find algorithm is an algorithm that performs two useful operations on
+union-find algorithm is an algorithm that performs two useful operations on
 such a data structure:
 
 Find: Determine which subset a particular element is in. This can be used for
@@ -14,10 +14,10 @@ Union: Join two subsets into a single subset.
 
 class UnionFind(object):
     """
-    Class that implements the union_set-find structure with
-    union_set by rank and find with path compression
+    Class that implements the union-find structure with
+    union by rank and find with path compression
 
-    :param size: Total number of elements in union_set set
+    :param size: Total number of elements in union set
     """
 
     def __init__(self, size):
@@ -52,7 +52,7 @@ class UnionFind(object):
         Instead of simply linking the tree of set1 to the tree
         of set2, we will first compare their ranks. The tree
         with smaller rank is then linked to the tree with
-        greater rank. This is called union_set by rank.
+        greater rank. This is called union by rank.
         """
         x_root = self.find(set1)
         y_root = self.find(set2)
@@ -100,9 +100,9 @@ def main():
     msg = (
         "\n"
         "Parent array after "
-        "union_set(2, 1), "
-        "union_set(4, 3) "
-        "and union_set(6, 5):"
+        "union(2, 1), "
+        "union(4, 3) "
+        "and union(6, 5):"
         )
 
     print msg
@@ -111,7 +111,7 @@ def main():
 
     # Part b)
     unfi.union(2, 4)
-    print "\nParent array after union_set(2, 4)"
+    print "\nParent array after union(2, 4)"
     print unfi
 
     # Part c)
