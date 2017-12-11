@@ -73,6 +73,20 @@ class UnionFind(object):
         y_root = self.find(set2)
         return x_root == y_root
 
+    def disjoint_sets(self):
+        """
+        Get all disjoint sets
+        """
+        my_dict = {}
+        for node in range(self.size):
+            root = self.find(node)
+            if root not in my_dict:
+                my_dict[root] = set([node])
+            else:
+                my_dict[root].add(node)
+
+        return my_dict.values()
+
     def __str__(self):
         return "Index: "\
                 + str(list(range(self.size)))\
@@ -120,18 +134,8 @@ def main():
     print union_find
 
     # Part d)
-    my_dict = {}
-    for node in range(9):
-        root = union_find.find(node)
-        if root not in my_dict:
-            my_dict[root] = set([node])
-        else:
-            my_dict[root].add(node)
-
     print "\nDisjoint sets: "
-
-    for my_set in my_dict.values():
-        print my_set
+    print "\n".join([str(my_set) for my_set in union_find.disjoint_sets()])
 
 if __name__ == "__main__":
     main()
