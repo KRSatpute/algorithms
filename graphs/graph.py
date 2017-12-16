@@ -25,8 +25,10 @@ class Graph(object):
         self.graph = defaultdict(list)
         self.union_find = UnionFind(self.vertices)
         self.is_cyclic = False
+        self.is_weighted = False
+        self.weights = {}
 
-    def add_edge(self, start, end):
+    def add_edge(self, start, end, weight=None):
         """
         add an edge to graph
         """
@@ -36,29 +38,59 @@ class Graph(object):
             self.graph[start].append(end)
             self.graph[end].append(start)
 
+        if weight is not None:
+            self.weights[(start, end)] = weight
+            self.is_weighted = True
+
         def check_cycle():
             """
             check for cycle in graph
             """
             # No need to check for cycle if cycle is already detected
             if not self.is_cyclic:
-                set1 = self.union_find.find(start)
-                set2 = self.union_find.find(end)
-                self.is_cyclic = set1 == set2
-                self.union_find.union(set1, set2)
-
+                if not self.is_directed:
+                    set1 = self.union_find.find(start)
+                    set2 = self.union_find.find(end)
+                    self.is_cyclic = set1 == set2
+                    self.union_find.union(set1, set2)
+                else:
+                    visited = set()
+                    path = [object()]
+                    path_set = set(path)
+                    stack = [iter(self.graph)]
+                    while stack:
+                        for vertex in stack[-1]:
+                            if vertex in path_set:
+                                self.is_cyclic = True
+                            elif vertex not in visited:
+                                visited.add(vertex)
+                                path.append(vertex)
+                                path_set.add(vertex)
+                                stack.append(iter(self.graph.get(vertex, ())))
+                                break
+                        else:
+                            path_set.remove(path.pop())
+                            stack.pop()
         check_cycle()
 
     def __str__(self):
-        grph = "Graph: " + str(set([(node1, node2)
-                                    for node1 in self.graph
-                                    for node2 in self.graph[node1]]))
+
+        v_set = set().union(
+            [nodes for nodes in self.graph],
+            [node for nodes in self.graph for node in self.graph[nodes]]
+            )
+
+        edges = set([(node1, node2)
+                    for node1 in self.graph
+                    for node2 in self.graph[node1]])
 
         return "\n".join([
-            grph,
-            "No. of Vertices: " + str(self.vertices),
+            "Vertices: " + str(v_set),
+            "Edges: " + str(edges),
+            "Weights: " + str(self.weights),
             "Is Directed: " + str(self.is_directed),
             "Is Cyclic: " + str(self.is_cyclic),
+            "Is Weighted: " + str(self.is_weighted)
         ])
 
     __repr__ = __str__
@@ -68,7 +100,7 @@ def main():
     """
     Running the code
     """
-    grph = Graph(vertices=4, is_directed=True)
+    grph = Graph(vertices=4, is_directed=False)
     grph.add_edge(0, 1)
     grph.add_edge(1, 2)
     grph.add_edge(2, 3)
