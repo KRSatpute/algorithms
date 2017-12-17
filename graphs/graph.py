@@ -7,7 +7,7 @@ graph(di-graph). The pair of form (u, v) indicates that there is an edge from
 vertex u to vertex v. The edges may contain weight/value/cost.
 """
 from collections import defaultdict
-from algorithms.graphs.union_find import UnionFind
+from algorithms.disjoint_sets.union_find import UnionFind
 # pylint: disable=too-few-public-methods
 
 
