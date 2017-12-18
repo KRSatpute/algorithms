@@ -51,7 +51,9 @@ class Graph(object):
                 if not self.is_directed:
                     set1 = self.union_find.find(start)
                     set2 = self.union_find.find(end)
-                    self.is_cyclic = set1 == set2
+                    if set1 == set2:
+                        self.is_cyclic = True
+                        return
                     self.union_find.union(set1, set2)
                 else:
                     visited = set()
