@@ -1,7 +1,7 @@
 """
-Breadth-first search (BFS) is an algorithm for traversing or searching tree or
+Breadth-first traversal/search (BFS) is an algorithm for traversing/searching
 graph data structures. It starts at the tree root (or some arbitrary node of a
-graph, sometimes referred to as a 'search key'[1]) and explores the neighbor
+graph, sometimes referred to as a 'search key') and explores the neighbor
 nodes first, before moving to the next level neighbours.
 """
 from algorithms.graphs.graph import Graph
@@ -9,7 +9,7 @@ from algorithms.graphs.graph import Graph
 
 def traverse(ds_graph=Graph, node=0):
     """
-    Function to print a BFS of graph
+    Function to return a BFS of graph
     """
     visited = [False] * ds_graph.vertices
 
@@ -18,17 +18,17 @@ def traverse(ds_graph=Graph, node=0):
 
     visited[node] = True
 
-    vertexs = []
+    t_vertices = []
     while queue:
         node = queue.pop(0)
-        vertexs.append(node)
+        t_vertices.append(node)
 
         for index in ds_graph.graph[node]:
             if not visited[index]:
                 queue.append(index)
                 visited[index] = True
 
-    return vertexs
+    return t_vertices
 
 
 def main():
