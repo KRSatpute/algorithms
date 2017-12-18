@@ -11,40 +11,40 @@ def traverse(ds_graph=Graph, node=0):
     """
     Function to return a DFS of graph
     """
-    visited = set()
-    path = [object()]
-    path_set = set(path)
-    stack = [iter(ds_graph.graph)]
+    visited = [False] * ds_graph.vertices
 
+    stack = []
+    stack.append(node)
+
+    visited[node] = True
+
+    t_vertices = []
     while stack:
-        for vertex in stack[-1]:
-            if vertex in path_set:
-                continue
-            elif vertex not in visited:
-                visited.add(vertex)
-                path.append(vertex)
-                path_set.add(vertex)
-                stack.append(iter(ds_graph.graph.get(vertex, ())))
-                break
-        else:
-            path_set.remove(path[0])
-            stack.pop()
-    return path
+        node = stack.pop()
+        t_vertices.append(node)
+
+        for index in ds_graph.graph[node]:
+            if not visited[index]:
+                stack.append(index)
+                visited[index] = True
+
+    return t_vertices
 
 
 def main():
     """
     Running the code
     """
-    grph = Graph(vertices=7, is_directed=True)
+    grph = Graph(vertices=7, is_directed=False)
+    grph.add_edge(0, 2)
     grph.add_edge(0, 1)
-    grph.add_edge(1, 2)
     grph.add_edge(2, 5)
-    grph.add_edge(1, 6)
+    grph.add_edge(5, 6)
     grph.add_edge(1, 4)
-    grph.add_edge(2, 3)
+    grph.add_edge(4, 6)
+    grph.add_edge(6, 3)
 
-    print traverse(grph, 0)
+    print traverse(grph, 3)
     print grph
 
 if __name__ == "__main__":
