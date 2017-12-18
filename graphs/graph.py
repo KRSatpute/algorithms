@@ -62,6 +62,7 @@ class Graph(object):
                         for vertex in stack[-1]:
                             if vertex in path_set:
                                 self.is_cyclic = True
+                                return
                             elif vertex not in visited:
                                 visited.add(vertex)
                                 path.append(vertex)
@@ -100,11 +101,14 @@ def main():
     """
     Running the code
     """
-    grph = Graph(vertices=4, is_directed=False)
+    grph = Graph(vertices=7, is_directed=True)
     grph.add_edge(0, 1)
-    grph.add_edge(1, 2)
+    grph.add_edge(0, 2)
+    grph.add_edge(1, 4)
+    grph.add_edge(4, 5)
+    grph.add_edge(5, 6)
     grph.add_edge(2, 3)
-    grph.add_edge(1, 3)
+    grph.add_edge(4, 0)
 
     print grph
 
