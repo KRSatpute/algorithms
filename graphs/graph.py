@@ -76,6 +76,55 @@ class Graph(object):
                             stack.pop()
         check_cycle()
 
+    def basic_cycles(self):
+        """
+        Returns a list of cycles which form a basis for cycles of Graph
+
+        A basis for cycles of a network is a minimal collection of
+        cycles such that any cycle in the network can be written
+        as a sum of cycles in the basis.  Here summation of cycles
+        is defined as "exclusive or" of the edges.
+
+        References
+        ----------
+        networkx cycle_basis
+        https://github.com/networkx/networkx/blob/master/networkx/algorithms/cycles.py
+        """
+        cycles = []
+        gnodes = set([(node1, node2)
+                     for node1 in self.graph
+                     for node2 in self.graph[node1]])
+
+        while gnodes:  # loop over connected components
+            root = gnodes.pop()
+            stack = [root]
+            pred = {root: root}
+            used = {root: set()}
+            while stack:  # walk the spanning tree finding cycles
+                parent = stack.pop()  # used last in so cycle is easier to find
+                p_used = used[parent]
+                for neighbour in self.graph[parent]:
+                    if neighbour not in used:  # new node
+                        pred[neighbour] = parent
+                        stack.append(neighbour)
+                        used[neighbour] = set([parent])
+                    elif neighbour == parent:
+                        cycles.append([parent])
+                    elif neighbour not in p_used:  # found a cycle
+                        path_new = used[neighbour]
+                        cycle = [neighbour, parent]
+                        path = pred[parent]
+                        while path not in path_new:
+                            cycle.append(path)
+                            path = pred[path]
+                        cycle.append(path)
+                        cycles.append(cycle)
+                        used[neighbour].add(parent)
+            gnodes -= set(pred)
+            root = None
+
+        return cycles
+
     def __str__(self):
 
         v_set = set().union(
@@ -84,8 +133,8 @@ class Graph(object):
             )
 
         edges = set([(node1, node2)
-                    for node1 in self.graph
-                    for node2 in self.graph[node1]])
+                     for node1 in self.graph
+                     for node2 in self.graph[node1]])
 
         return "\n".join([
             "Vertices: " + str(v_set),
@@ -93,7 +142,8 @@ class Graph(object):
             "Weights: " + str(self.weights),
             "Is Directed: " + str(self.is_directed),
             "Is Cyclic: " + str(self.is_cyclic),
-            "Is Weighted: " + str(self.is_weighted)
+            "Is Weighted: " + str(self.is_weighted),
+            "basic Cycles: " + str(self.basic_cycles())
         ])
 
     __repr__ = __str__
