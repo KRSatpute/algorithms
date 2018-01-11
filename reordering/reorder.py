@@ -56,5 +56,6 @@ def main():
     print reorder_by_position(mylist, myorder)
     print reorder_by_index(mylist, myorder)
 
+
 if __name__ == "__main__":
     main()

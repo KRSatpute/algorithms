@@ -26,5 +26,6 @@ def main():
     print search(range(1, 21, 2), 9)  # will print 4
     print search(range(1, 21, 2), 0)  # will print -1
 
+
 if __name__ == "__main__":
     main()

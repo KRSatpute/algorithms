@@ -47,5 +47,6 @@ def main():
     print search(list_of_elems, -232)  # will print -1
     print search(list_of_elems[0:1], 0)  # will print 0
 
+
 if __name__ == "__main__":
     main()

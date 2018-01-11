@@ -40,5 +40,6 @@ def main():
 
     print select_max_activities(activities)
 
+
 if __name__ == "__main__":
     main()

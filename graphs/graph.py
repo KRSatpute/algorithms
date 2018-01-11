@@ -91,38 +91,9 @@ class Graph(object):
         https://github.com/networkx/networkx/blob/master/networkx/algorithms/cycles.py
         """
         cycles = []
-        gnodes = set([(node1, node2)
-                     for node1 in self.graph
-                     for node2 in self.graph[node1]])
-
-        while gnodes:  # loop over connected components
-            root = gnodes.pop()
-            stack = [root]
-            pred = {root: root}
-            used = {root: set()}
-            while stack:  # walk the spanning tree finding cycles
-                parent = stack.pop()  # used last in so cycle is easier to find
-                p_used = used[parent]
-                for neighbour in self.graph[parent]:
-                    if neighbour not in used:  # new node
-                        pred[neighbour] = parent
-                        stack.append(neighbour)
-                        used[neighbour] = set([parent])
-                    elif neighbour == parent:
-                        cycles.append([parent])
-                    elif neighbour not in p_used:  # found a cycle
-                        path_new = used[neighbour]
-                        cycle = [neighbour, parent]
-                        path = pred[parent]
-                        while path not in path_new:
-                            cycle.append(path)
-                            path = pred[path]
-                        cycle.append(path)
-                        cycles.append(cycle)
-                        used[neighbour].add(parent)
-            gnodes -= set(pred)
-            root = None
-
+        gnodes = set([(node1, node2) for node1 in self.graph
+                      for node2 in self.graph[node1]])
+        cycles.append(gnodes)
         return cycles
 
     def __str__(self):
@@ -142,8 +113,8 @@ class Graph(object):
             "Weights: " + str(self.weights),
             "Is Directed: " + str(self.is_directed),
             "Is Cyclic: " + str(self.is_cyclic),
-            "Is Weighted: " + str(self.is_weighted),
-            "basic Cycles: " + str(self.basic_cycles())
+            "Is Weighted: " + str(self.is_weighted)
+            # "basic Cycles: " + str(self.basic_cycles())
         ])
 
     __repr__ = __str__
@@ -154,15 +125,17 @@ def main():
     Running the code
     """
     grph = Graph(vertices=7, is_directed=True)
-    grph.add_edge(0, 1)
-    grph.add_edge(0, 2)
-    grph.add_edge(1, 4)
-    grph.add_edge(4, 5)
-    grph.add_edge(5, 6)
-    grph.add_edge(2, 3)
-    grph.add_edge(4, 0)
+    grph.add_edge(0, 1, 4)
+    grph.add_edge(0, 2, -5)
+    grph.add_edge(1, 4, 3)
+    grph.add_edge(4, 5, 2)
+    grph.add_edge(5, 6, -2)
+    grph.add_edge(2, 3, 1)
+    grph.add_edge(4, 0, 7)
 
     print grph
+    print grph.graph
+
 
 if __name__ == "__main__":
     main()
