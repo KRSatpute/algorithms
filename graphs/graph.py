@@ -76,26 +76,6 @@ class Graph(object):
                             stack.pop()
         check_cycle()
 
-    def basic_cycles(self):
-        """
-        Returns a list of cycles which form a basis for cycles of Graph
-
-        A basis for cycles of a network is a minimal collection of
-        cycles such that any cycle in the network can be written
-        as a sum of cycles in the basis.  Here summation of cycles
-        is defined as "exclusive or" of the edges.
-
-        References
-        ----------
-        networkx cycle_basis
-        https://github.com/networkx/networkx/blob/master/networkx/algorithms/cycles.py
-        """
-        cycles = []
-        gnodes = set([(node1, node2) for node1 in self.graph
-                      for node2 in self.graph[node1]])
-        cycles.append(gnodes)
-        return cycles
-
     def __str__(self):
 
         v_set = set().union(
