@@ -4,7 +4,7 @@ vertices such that for every directed edge uv, vertex u comes before v in the
 ordering. Topological Sorting for a graph is not possible if the graph is not
 a DAG.
 
-A DAG G has at least one vertex with in-degree 0 and one vertex with out-degree
+A DAG has at least one vertex with in-degree 0 and one vertex with out-degree
 0.
 Proof: There's a simple proof to the above fact is that a DAG does not contain
 a cycle which means that all paths will be of finite length. Now let S be the
