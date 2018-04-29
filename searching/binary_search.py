@@ -18,7 +18,7 @@ def iterative_search(elements_list_sorted, element):
 
     while index_start <= index_last:
 
-        index_mid = index_start + (index_last - index_start) / 2
+        index_mid = index_start + int((index_last - index_start) / 2)
 
         if elements_list_sorted[index_mid] == element:
             # Check if element is present at mid
@@ -44,7 +44,7 @@ def recursive_search(elements_list_sorted, element):
         """
         Recursive part of the algorithm
         """
-        mid = (first + last) / 2
+        mid = int((first + last) / 2)
         index = 0
 
         if first > last:
@@ -70,14 +70,14 @@ def main():
     """
     list_of_elems = [2, 3, 4, 10, 40, 44, 45, 89, 101, 112, 178, 205]
 
-    print iterative_search(list_of_elems, 101)  # will print 8
-    print iterative_search(list_of_elems, 300)  # will print -1
-    print iterative_search(list_of_elems, -254645)  # will print -1
-    print iterative_search(list_of_elems, 2)  # will print 0
-    print recursive_search(list_of_elems, 178)  # will print 10
-    print recursive_search(list_of_elems, 1616164)  # will print -1
-    print recursive_search(list_of_elems, 10)  # will print 3
-    print recursive_search(list_of_elems[0:2], -8451854)  # will print -1
+    print(iterative_search(list_of_elems, 101))  # will print 8
+    print(iterative_search(list_of_elems, 300))  # will print -1
+    print(iterative_search(list_of_elems, -254645))  # will print -1
+    print(iterative_search(list_of_elems, 2))  # will print 0
+    print(recursive_search(list_of_elems, 178))  # will print 10
+    print(recursive_search(list_of_elems, 1616164))  # will print -1
+    print(recursive_search(list_of_elems, 10))  # will print 3
+    print(recursive_search(list_of_elems[0:2], -8451854))  # will print -1
 
 
 if __name__ == "__main__":

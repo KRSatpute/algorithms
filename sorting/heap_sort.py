@@ -72,7 +72,7 @@ def main():
     """
     list_of_elems = [3, 178, 4, 101, 40, 44, 205, 89, 10, 112, 2, 45]
 
-    print sort(list_of_elems)
+    print(sort(list_of_elems))
     # will print [2, 3, 4, 10, 40, 44, 45, 89, 101, 112, 178, 205]
 
 

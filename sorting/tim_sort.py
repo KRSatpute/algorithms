@@ -85,7 +85,7 @@ def main():
                      82, 67, -11, 70, 77, 54, -59, 100, 45, -57, 60, -92, 97,
                      -10, -19, -84, -91, -36, -94, -48, -95, 86, -73]
 
-    print sort(list_of_elems)
+    print(sort(list_of_elems))
     # will print -100 to 100 sequentially
 
 

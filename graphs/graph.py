@@ -17,6 +17,8 @@ class Graph(object):
     adjacency list
     :param vertices: No. of vertices
     :param is_directed: Indicate if graph is directed or un-directed
+    :param is_cyclic: Indicate if graph is cyclic
+    :param is_weighted: Indicate if graph edges has weights assigned to them.
     """
 
     def __init__(self, vertices=0, is_directed=False):
@@ -113,8 +115,8 @@ def main():
     grph.add_edge(2, 3, 1)
     grph.add_edge(4, 0, 7)
 
-    print grph
-    print grph.graph
+    print(grph)
+    print(grph.graph)
 
 
 if __name__ == "__main__":

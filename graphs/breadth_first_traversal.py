@@ -52,8 +52,8 @@ def main():
     grph.add_edge(4, 6)
     grph.add_edge(6, 5)
 
-    print traverse(grph, 6)
-    print grph
+    print(traverse(grph, 6))
+    print(grph)
 
 
 if __name__ == "__main__":

@@ -99,8 +99,8 @@ def main():
     grph.add_edge(4, 6)
     grph.add_edge(6, 5)
 
-    print grph
-    print sort(grph)
+    print(grph)
+    print(sort(grph))
 
 
 if __name__ == "__main__":

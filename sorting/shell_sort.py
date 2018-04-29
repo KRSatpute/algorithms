@@ -14,7 +14,7 @@ def sort(elements_list):
     """
     # Start with a big gap, then reduce the gap
     size = len(elements_list)
-    gap = size / 2
+    gap = int(size / 2)
 
     # Do a gapped insertion sort for this gap size.
     # The first gap elements a[0..gap-1] are already in gapped
@@ -37,7 +37,7 @@ def sort(elements_list):
 
             # put temp (the original a[i]) in its correct location
             elements_list[j] = temp
-        gap /= 2
+        gap = int(gap / 2)
 
     return elements_list
 
@@ -48,7 +48,7 @@ def main():
     """
     list_of_elems = [3, 178, 4, 101, 40, 44, 205, 89, 10, 112, 2, 45]
 
-    print sort(list_of_elems)
+    print(sort(list_of_elems))
     # will print [2, 3, 4, 10, 40, 44, 45, 89, 101, 112, 178, 205]
 
 

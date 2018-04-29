@@ -85,7 +85,7 @@ class UnionFind(object):
             else:
                 my_dict[root].add(node)
 
-        return my_dict.values()
+        return list(my_dict.values())
 
     def __str__(self):
         return "Index: "\
@@ -104,8 +104,8 @@ def main():
     # Part a)
     union_find = UnionFind(9)
 
-    print "Initial Set:"
-    print union_find
+    print("Initial Set:")
+    print(union_find)
 
     union_find.union(2, 3)
     union_find.union(4, 3)
@@ -119,23 +119,23 @@ def main():
         "and union(6, 5):"
         )
 
-    print msg
-    print union_find
-    print union_find.has_same_root(2, 3)
+    print(msg)
+    print(union_find)
+    print(union_find.has_same_root(2, 3))
 
     # Part b)
     union_find.union(2, 4)
-    print "\nParent array after union(2, 4)"
-    print union_find
+    print("\nParent array after union(2, 4)")
+    print(union_find)
 
     # Part c)
     union_find.find(2)
-    print "\nParent array after find(2)"
-    print union_find
+    print("\nParent array after find(2)")
+    print(union_find)
 
     # Part d)
-    print "\nDisjoint sets: "
-    print "\n".join([str(my_set) for my_set in union_find.disjoint_sets()])
+    print("\nDisjoint sets: ")
+    print("\n".join([str(my_set) for my_set in union_find.disjoint_sets()]))
 
 
 if __name__ == "__main__":

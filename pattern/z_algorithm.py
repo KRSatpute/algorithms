@@ -127,13 +127,13 @@ def main():
     """
     Running the code
     """
-    print search_with_sentinel("ab", "abcxxxabyyy")
-    print search("ab", "abcxxxabyyy")
-    print z_array("ab$abcxxxabyyy")
-    print z_array("aab$baabaa")
-    print z_array("aaaaaa")
-    print z_array("aabaacd")
-    print z_array("abababab")
+    print(search_with_sentinel("ab", "abcxxxabyyy"))
+    print(search("ab", "abcxxxabyyy"))
+    print(z_array("ab$abcxxxabyyy"))
+    print(z_array("aab$baabaa"))
+    print(z_array("aaaaaa"))
+    print(z_array("aabaacd"))
+    print(z_array("abababab"))
 
 
 if __name__ == "__main__":

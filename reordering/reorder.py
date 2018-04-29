@@ -10,7 +10,7 @@ def reorder_by_sort(arr, arr_to_sort):
     when arr_to_sort is sorted
     """
     # ask what does * do?
-    return zip(*sorted(zip(arr, arr_to_sort), key=lambda x: x[1]))
+    return list(zip(*sorted(zip(arr, arr_to_sort), key=lambda x: x[1])))
 
 
 def reorder_by_position(arr, arr_index):
@@ -38,23 +38,23 @@ def main():
 
     reordered_arr = reorder_by_sort(arr, arr_to_sort)
 
-    print reordered_arr
-    print zip(reordered_arr[0], reordered_arr[1])
+    print(reordered_arr)
+    print(list(zip(reordered_arr[0], reordered_arr[1])))
 
     arr = [5, 1, 3, 0, 5, 8]
     arr_to_sort = [9, 2, 4, 6, 7, 9]
 
     reordered_arr = reorder_by_sort(arr, arr_to_sort)
 
-    print reordered_arr[0]
-    print reordered_arr[1]
-    print zip(reordered_arr[0], reordered_arr[1])
+    print(reordered_arr[0])
+    print(reordered_arr[1])
+    print(list(zip(reordered_arr[0], reordered_arr[1])))
 
     mylist = ['a', 'b', 'c', 'd', 'e']
     myorder = [3, 2, 0, 1, 4]
 
-    print reorder_by_position(mylist, myorder)
-    print reorder_by_index(mylist, myorder)
+    print(reorder_by_position(mylist, myorder))
+    print(reorder_by_index(mylist, myorder))
 
 
 if __name__ == "__main__":

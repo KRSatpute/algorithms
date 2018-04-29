@@ -20,7 +20,7 @@ def count_sort(elements_list, exponent):
 
     # Store count of occurrences in count[]
     for pos in range(0, size):
-        index = (elements_list[pos] / exponent)
+        index = (int(elements_list[pos] / exponent))
         count[(index) % 10] += 1
 
     # Change count[i] so that count[i] now contains actual
@@ -31,7 +31,7 @@ def count_sort(elements_list, exponent):
     # Build the output array
     pos = size - 1
     while pos >= 0:
-        index = (elements_list[pos] / exponent)
+        index = int((elements_list[pos] / exponent))
         output[count[(index) % 10] - 1] = elements_list[pos]
         count[(index) % 10] -= 1
         pos -= 1
@@ -67,7 +67,7 @@ def main():
     """
     list_of_elems = [3, 178, 4, 101, 40, 44, 205, 89, 10, 112, 2, 45]
 
-    print sort(list_of_elems)
+    print(sort(list_of_elems))
     # will print [2, 3, 4, 10, 40, 44, 45, 89, 101, 112, 178, 205]
 
 

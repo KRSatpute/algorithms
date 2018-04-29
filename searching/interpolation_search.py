@@ -58,14 +58,14 @@ def main():
     """
     Main. Running the code
     """
-    list_of_elems = [10, 12, 13, 16, 18, 19, 20, 21,
-                     22, 23, 24, 33, 35, 42, 47]
-    print search(list_of_elems, 18)  # will print 4
-    print search(list_of_elems, 47)  # will print 14
-    print search(list_of_elems, 10)  # will print 0
-    print search(list_of_elems, 33)  # will print 11
-    print search(list_of_elems, 1)  # will print -1
-    print search(list_of_elems, 300)  # will print -1
+    list_of_elems = [10, 12, 13, 16, 18, 19, 20, 21, 22,
+                     23, 24, 33, 35, 42, 47]
+    print(search(list_of_elems, 18))  # will print 4
+    print(search(list_of_elems, 47))  # will print 14
+    print(search(list_of_elems, 10))  # will print 0
+    print(search(list_of_elems, 33))  # will print 11
+    print(search(list_of_elems, 1))  # will print -1
+    print(search(list_of_elems, 300))  # will print -1
 
 
 if __name__ == "__main__":

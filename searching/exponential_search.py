@@ -27,9 +27,9 @@ def search(element_list_sorted, element):
         index *= 2
 
     binary_search_result = bi_s(
-        element_list_sorted[(index / 2): min(index, length_list)], element
+        element_list_sorted[(int(index / 2)): min(index, length_list)], element
         )
-    return (index / 2) + binary_search_result\
+    return (int(index / 2)) + binary_search_result\
         if binary_search_result != -1 else -1
 
 
@@ -40,12 +40,12 @@ def main():
     list_of_elems = [0, 1, 1, 2, 3, 5, 8, 13, 21,
                      34, 55, 89, 144, 233, 377, 610, 987]
 
-    print search(list_of_elems, 144)  # will print 12
-    print search(list_of_elems, 165415)  # will print -1
-    print search(list_of_elems, 13)  # will print 7
-    print search(list_of_elems, 987)  # will print 16
-    print search(list_of_elems, -232)  # will print -1
-    print search(list_of_elems[0:1], 0)  # will print 0
+    print(search(list_of_elems, 144))  # will print 12
+    print(search(list_of_elems, 165415))  # will print -1
+    print(search(list_of_elems, 13))  # will print 7
+    print(search(list_of_elems, 987))  # will print 16
+    print(search(list_of_elems, -232))  # will print -1
+    print(search(list_of_elems[0:1], 0))  # will print 0
 
 
 if __name__ == "__main__":

@@ -52,10 +52,10 @@ def main():
     """
     list_of_elems = [0, 1, 1, 2, 3, 5, 8, 13, 21,
                      34, 55, 89, 144, 233, 377, 610, 987]
-    print search(list_of_elems, 144)  # will print 12
-    print search(list_of_elems, 165415)  # will print -1
-    print search(list_of_elems, 13)  # will print 7
-    print search(list_of_elems, 987)  # will print 16
+    print(search(list_of_elems, 144))  # will print 12
+    print(search(list_of_elems, 165415))  # will print -1
+    print(search(list_of_elems, 13))  # will print 7
+    print(search(list_of_elems, 987))  # will print 16
 
 
 if __name__ == "__main__":

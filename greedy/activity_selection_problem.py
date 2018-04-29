@@ -38,7 +38,7 @@ def main():
     """
     activities = [(5, 9), (1, 2), (3, 4), (0, 6), (5, 7), (8, 9)]
 
-    print select_max_activities(activities)
+    print(select_max_activities(activities))
 
 
 if __name__ == "__main__":
